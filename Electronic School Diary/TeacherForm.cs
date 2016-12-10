@@ -38,6 +38,19 @@ namespace ElectronicSchoolDiary
             ControlBox = false;
             TrueFalseAbsentComboBox.SelectedIndex = 1;
             AbsentHourComboBox.SelectedIndex = 0;
+            PopulateStudentsComboBox();
+            PopulateCoursesComboBox();
+        }
+        private void PopulateStudentsComboBox()
+        {
+            string Name = StudentRepository.GetNameQuery();
+            string Surname = StudentRepository.GetSurnameQuery();
+            Lists.FillDropDownList2(Name, "Name", Surname, "Surname", StudentsComboBox);
+        }
+        private void PopulateCoursesComboBox()
+        {
+            string Title = CoursesRepository.GetQuery();
+            Lists.FillDropDownList1(Title, "Title", CoursesComboBox);
         }
 
         private void LogOutUserButton_Click(object sender, EventArgs e)

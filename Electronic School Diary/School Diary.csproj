@@ -49,6 +49,7 @@
       <HintPath>packages\iTextSharp.5.5.10\lib\itextsharp.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -89,6 +90,7 @@
     <Compile Include="DirectorForm.Designer.cs">
       <DependentUpon>DirectorForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="HashPassword.cs" />
     <Compile Include="Lists.cs" />
     <Compile Include="Email.cs" />
     <Compile Include="LoginForm.cs">

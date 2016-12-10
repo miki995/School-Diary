@@ -1,4 +1,5 @@
 ﻿using ElectronicSchoolDiary.Models;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlServerCe;
@@ -21,7 +22,42 @@ namespace ElectronicSchoolDiary.Repos
             return query;
          
         }
-       
+        public static int GetIdByTitle(int title)
+        {
+            SqlCeCommand command = new SqlCeCommand(@"SELECT Id FROM Departments WHERE Title = @title", Connection);
+            command.Parameters.AddWithValue("@title", title);
+            SqlCeDataReader reader = command.ExecuteReader();
 
+            reader.Read();
+
+            int result = (int)reader["Id"];
+            reader.Close();
+
+            return result;
+        }
+
+        public static bool AddDepartment(int Title,int TeachersId, int ClassesId)
+        {
+            bool flag = false;
+            try
+            {
+                    SqlCeCommand command1 = new SqlCeCommand(@"INSERT INTO Departments (Title, TeachersId, ClassesId)
+                    VALUES (@title, @teachersid, @classesid)", Connection);
+                    command1.Parameters.AddWithValue("@title", Title);
+                    command1.Parameters.AddWithValue("@teachersid", TeachersId);
+                    command1.Parameters.AddWithValue("@classesid", ClassesId);
+                    int result = command1.ExecuteNonQuery();
+                    if (result > 0)
+                    {
+                        flag = true;
+                        MessageBox.Show("Odjeljenje je uspješno dodato !");
+                    }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return flag;
+        }
     }
 }

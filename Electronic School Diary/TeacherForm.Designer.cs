@@ -558,11 +558,11 @@
             this.PasswordPanel.Controls.Add(this.NewPassTextBox);
             this.PasswordPanel.Controls.Add(this.OldPassTextBox);
             this.PasswordPanel.Controls.Add(this.label17);
-            this.PasswordPanel.Location = new System.Drawing.Point(9, 63);
+            this.PasswordPanel.Location = new System.Drawing.Point(69, 428);
             this.PasswordPanel.Name = "PasswordPanel";
             this.PasswordPanel.Size = new System.Drawing.Size(905, 405);
             this.PasswordPanel.TabIndex = 58;
-            // 
+             // 
             // CancelMeetingRoundedButton
             // 
             this.CancelMeetingRoundedButton.BackColor = System.Drawing.Color.Crimson;

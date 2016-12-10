@@ -21,15 +21,15 @@ namespace ElectronicSchoolDiary
         {
             return flag;
         }
-
+       
+        
         public void  CheckLogin(TextBox Username, TextBox Password)
         {
            SqlCeConnection Connection = DataBaseConnection.Instance.Connection;
                if (Username.TextLength > 0 && Password.TextLength > 0)
                 {
                     try
-                    {
-                      
+                    { 
                         SqlCeCommand logincommand = new SqlCeCommand(@"SELECT * FROM Users WHERE UserName=@uname and Password=@pass", Connection);
                         logincommand.Parameters.AddWithValue("@uname", Username.Text);
                         logincommand.Parameters.AddWithValue("@pass", Password.Text);

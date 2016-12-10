@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlServerCe;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -35,11 +36,10 @@ namespace ElectronicSchoolDiary.Repos
             return flag;
            
         }
-        public static int GetIdByName(string name,string password)
+        public static int GetIdByName(string name)
         {
-            SqlCeCommand command = new SqlCeCommand(@"SELECT Id FROM Users WHERE UserName = @name AND Password = @pass", Connection);
+            SqlCeCommand command = new SqlCeCommand(@"SELECT Id FROM Users WHERE UserName = @name", Connection);
             command.Parameters.AddWithValue("@name", name);
-            command.Parameters.AddWithValue("@pass", password);
             SqlCeDataReader reader = command.ExecuteReader();
 
             reader.Read();
@@ -49,6 +49,7 @@ namespace ElectronicSchoolDiary.Repos
 
             return result;
         }
+       
         public static void InsertUser(string UserName, string Password)
         {
             try
@@ -61,6 +62,7 @@ namespace ElectronicSchoolDiary.Repos
                     int result = command.ExecuteNonQuery();
                     if (result > 0)
                     {
+                    command.Dispose();
                         MessageBox.Show("Podaci za logovanje su uspješno dodati !");
                     }
                 
@@ -75,12 +77,11 @@ namespace ElectronicSchoolDiary.Repos
             bool flag = false;
             try
             {
-
-                SqlCeCommand command = new SqlCeCommand(@"SELECT Id FROM Users 
+                SqlCeCommand command = new SqlCeCommand(@"SELECT UserName FROM Users 
                     WHERE @usname = UserName", Connection);
                 command.Parameters.AddWithValue("@usname", UserName);
                 SqlCeDataReader reader = command.ExecuteReader();
-                if (reader.Read() && (int)reader["Id"] > 0)
+                if (reader.Read() && reader["UserName"].ToString() == UserName)
                 {
                     flag = true;
                     MessageBox.Show("Korisničko ime  " + "'" + UserName + "'" + "  već postoji !");

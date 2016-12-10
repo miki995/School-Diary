@@ -34,6 +34,7 @@
             this.UserBox = new System.Windows.Forms.ComboBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.PasswordPanel = new System.Windows.Forms.Panel();
+            this.ChangePassAdminButton = new ElectronicSchoolDiary.RoundedButton();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -43,23 +44,21 @@
             this.label10 = new System.Windows.Forms.Label();
             this.DepartmentPanel = new System.Windows.Forms.Panel();
             this.label48 = new System.Windows.Forms.Label();
-            this.SectionsComboBox = new System.Windows.Forms.ComboBox();
+            this.AddSectionsButton = new ElectronicSchoolDiary.RoundedButton();
             this.SectionsNameTextBox = new System.Windows.Forms.TextBox();
             this.label47 = new System.Windows.Forms.Label();
             this.ClassComboBox = new System.Windows.Forms.ComboBox();
             this.label46 = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
+            this.AddDepartmentAndClassTeacherButton = new ElectronicSchoolDiary.RoundedButton();
             this.DepartmentNumberTextBox = new System.Windows.Forms.TextBox();
             this.label32 = new System.Windows.Forms.Label();
+            this.AddCourseButton = new ElectronicSchoolDiary.RoundedButton();
             this.CourseTextBox = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
-            this.CoursesCheckedListBox = new System.Windows.Forms.CheckedListBox();
-            this.ClassTeacherComboBox = new System.Windows.Forms.ComboBox();
             this.ClassNumberComboBox = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
             this.StudentPanel = new System.Windows.Forms.Panel();
             this.label42 = new System.Windows.Forms.Label();
             this.label44 = new System.Windows.Forms.Label();
@@ -79,6 +78,7 @@
             this.ParentSurnameTextBox = new System.Windows.Forms.TextBox();
             this.ParentNameTextBox = new System.Windows.Forms.TextBox();
             this.DepartmentComboBox = new System.Windows.Forms.ComboBox();
+            this.AddStudentButton = new ElectronicSchoolDiary.RoundedButton();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.StudentPhoneTextBox = new System.Windows.Forms.TextBox();
@@ -97,6 +97,7 @@
             this.label51 = new System.Windows.Forms.Label();
             this.label52 = new System.Windows.Forms.Label();
             this.DirectorUserNameTextBox = new System.Windows.Forms.TextBox();
+            this.AddDirectorButton = new ElectronicSchoolDiary.RoundedButton();
             this.label53 = new System.Windows.Forms.Label();
             this.label54 = new System.Windows.Forms.Label();
             this.DirectorSurnameTextBox = new System.Windows.Forms.TextBox();
@@ -106,6 +107,7 @@
             this.label22 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.UserNameTextBox = new System.Windows.Forms.TextBox();
+            this.AddAdminButton = new ElectronicSchoolDiary.RoundedButton();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.AdminSurnameTextBox = new System.Windows.Forms.TextBox();
@@ -118,6 +120,7 @@
             this.TeacherUserNameTextBox = new System.Windows.Forms.TextBox();
             this.label38 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
+            this.AddTeacherButton = new ElectronicSchoolDiary.RoundedButton();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -126,17 +129,13 @@
             this.TeacherAddressTextBox = new System.Windows.Forms.TextBox();
             this.TeacherSurnameTextBox = new System.Windows.Forms.TextBox();
             this.TeacherNameTextBox = new System.Windows.Forms.TextBox();
-            this.AddSectionsButton = new ElectronicSchoolDiary.RoundedButton();
-            this.AddDepartmentAndClassTeacherButton = new ElectronicSchoolDiary.RoundedButton();
-            this.AddCourseButton = new ElectronicSchoolDiary.RoundedButton();
-            this.AddStudentButton = new ElectronicSchoolDiary.RoundedButton();
-            this.AddDirectorButton = new ElectronicSchoolDiary.RoundedButton();
-            this.AddAdminButton = new ElectronicSchoolDiary.RoundedButton();
-            this.AddTeacherButton = new ElectronicSchoolDiary.RoundedButton();
-            this.ChangePassAdminButton = new ElectronicSchoolDiary.RoundedButton();
             this.ControlTableButton = new ElectronicSchoolDiary.RoundedButton();
             this.UserSettingsButton = new ElectronicSchoolDiary.RoundedButton();
             this.LogOutUserButton = new ElectronicSchoolDiary.RoundedButton();
+            this.label56 = new System.Windows.Forms.Label();
+            this.label57 = new System.Windows.Forms.Label();
+            this.label58 = new System.Windows.Forms.Label();
+            this.ClassTeachersComboBox = new System.Windows.Forms.ComboBox();
             this.PasswordPanel.SuspendLayout();
             this.DepartmentPanel.SuspendLayout();
             this.StudentPanel.SuspendLayout();
@@ -199,6 +198,16 @@
             this.PasswordPanel.Size = new System.Drawing.Size(738, 326);
             this.PasswordPanel.TabIndex = 32;
             // 
+            // ChangePassAdminButton
+            // 
+            this.ChangePassAdminButton.Location = new System.Drawing.Point(443, 262);
+            this.ChangePassAdminButton.Name = "ChangePassAdminButton";
+            this.ChangePassAdminButton.Size = new System.Drawing.Size(130, 23);
+            this.ChangePassAdminButton.TabIndex = 34;
+            this.ChangePassAdminButton.Text = "Potvrdite promjenu";
+            this.ChangePassAdminButton.UseVisualStyleBackColor = true;
+            this.ChangePassAdminButton.Click += new System.EventHandler(this.ChangePassAdminButton_Click);
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -259,8 +268,11 @@
             // 
             // DepartmentPanel
             // 
+            this.DepartmentPanel.Controls.Add(this.ClassTeachersComboBox);
+            this.DepartmentPanel.Controls.Add(this.label58);
+            this.DepartmentPanel.Controls.Add(this.label57);
+            this.DepartmentPanel.Controls.Add(this.label56);
             this.DepartmentPanel.Controls.Add(this.label48);
-            this.DepartmentPanel.Controls.Add(this.SectionsComboBox);
             this.DepartmentPanel.Controls.Add(this.AddSectionsButton);
             this.DepartmentPanel.Controls.Add(this.SectionsNameTextBox);
             this.DepartmentPanel.Controls.Add(this.label47);
@@ -273,13 +285,9 @@
             this.DepartmentPanel.Controls.Add(this.AddCourseButton);
             this.DepartmentPanel.Controls.Add(this.CourseTextBox);
             this.DepartmentPanel.Controls.Add(this.label31);
-            this.DepartmentPanel.Controls.Add(this.CoursesCheckedListBox);
-            this.DepartmentPanel.Controls.Add(this.ClassTeacherComboBox);
             this.DepartmentPanel.Controls.Add(this.ClassNumberComboBox);
-            this.DepartmentPanel.Controls.Add(this.label9);
             this.DepartmentPanel.Controls.Add(this.label28);
             this.DepartmentPanel.Controls.Add(this.label29);
-            this.DepartmentPanel.Controls.Add(this.label30);
             this.DepartmentPanel.Location = new System.Drawing.Point(16, 89);
             this.DepartmentPanel.Name = "DepartmentPanel";
             this.DepartmentPanel.Size = new System.Drawing.Size(752, 374);
@@ -290,36 +298,32 @@
             this.label48.BackColor = System.Drawing.Color.Gold;
             this.label48.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label48.ForeColor = System.Drawing.Color.Gold;
-            this.label48.Location = new System.Drawing.Point(408, 115);
+            this.label48.Location = new System.Drawing.Point(419, 172);
             this.label48.Name = "label48";
             this.label48.Size = new System.Drawing.Size(260, 2);
             this.label48.TabIndex = 77;
             // 
-            // SectionsComboBox
+            // AddSectionsButton
             // 
-            this.SectionsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.SectionsComboBox.FormattingEnabled = true;
-            this.SectionsComboBox.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4"});
-            this.SectionsComboBox.Location = new System.Drawing.Point(202, 39);
-            this.SectionsComboBox.Name = "SectionsComboBox";
-            this.SectionsComboBox.Size = new System.Drawing.Size(116, 21);
-            this.SectionsComboBox.TabIndex = 1;
+            this.AddSectionsButton.Location = new System.Drawing.Point(579, 97);
+            this.AddSectionsButton.Name = "AddSectionsButton";
+            this.AddSectionsButton.Size = new System.Drawing.Size(100, 23);
+            this.AddSectionsButton.TabIndex = 7;
+            this.AddSectionsButton.Text = "Dodajte smjer";
+            this.AddSectionsButton.UseVisualStyleBackColor = true;
+            this.AddSectionsButton.Click += new System.EventHandler(this.AddSectionsButton_Click);
             // 
             // SectionsNameTextBox
             // 
-            this.SectionsNameTextBox.Location = new System.Drawing.Point(553, 23);
+            this.SectionsNameTextBox.Location = new System.Drawing.Point(579, 52);
             this.SectionsNameTextBox.Name = "SectionsNameTextBox";
             this.SectionsNameTextBox.Size = new System.Drawing.Size(100, 20);
-            this.SectionsNameTextBox.TabIndex = 7;
+            this.SectionsNameTextBox.TabIndex = 6;
             // 
             // label47
             // 
             this.label47.AutoSize = true;
-            this.label47.Location = new System.Drawing.Point(422, 26);
+            this.label47.Location = new System.Drawing.Point(422, 54);
             this.label47.Name = "label47";
             this.label47.Size = new System.Drawing.Size(33, 13);
             this.label47.TabIndex = 74;
@@ -332,7 +336,7 @@
             this.ClassComboBox.Location = new System.Drawing.Point(579, 259);
             this.ClassComboBox.Name = "ClassComboBox";
             this.ClassComboBox.Size = new System.Drawing.Size(100, 21);
-            this.ClassComboBox.TabIndex = 10;
+            this.ClassComboBox.TabIndex = 9;
             // 
             // label46
             // 
@@ -353,9 +357,19 @@
             this.label45.Size = new System.Drawing.Size(2, 260);
             this.label45.TabIndex = 71;
             // 
+            // AddDepartmentAndClassTeacherButton
+            // 
+            this.AddDepartmentAndClassTeacherButton.Location = new System.Drawing.Point(71, 190);
+            this.AddDepartmentAndClassTeacherButton.Name = "AddDepartmentAndClassTeacherButton";
+            this.AddDepartmentAndClassTeacherButton.Size = new System.Drawing.Size(224, 23);
+            this.AddDepartmentAndClassTeacherButton.TabIndex = 5;
+            this.AddDepartmentAndClassTeacherButton.Text = "Dodajte odjeljenje i razrednog nastavnika";
+            this.AddDepartmentAndClassTeacherButton.UseVisualStyleBackColor = true;
+            this.AddDepartmentAndClassTeacherButton.Click += new System.EventHandler(this.AddDepartmentAndClassTeacherButton_Click);
+            // 
             // DepartmentNumberTextBox
             // 
-            this.DepartmentNumberTextBox.Location = new System.Drawing.Point(218, 75);
+            this.DepartmentNumberTextBox.Location = new System.Drawing.Point(221, 49);
             this.DepartmentNumberTextBox.Name = "DepartmentNumberTextBox";
             this.DepartmentNumberTextBox.Size = new System.Drawing.Size(100, 20);
             this.DepartmentNumberTextBox.TabIndex = 2;
@@ -363,18 +377,28 @@
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(16, 78);
+            this.label32.Location = new System.Drawing.Point(19, 52);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(72, 13);
             this.label32.TabIndex = 40;
             this.label32.Text = "Broj odjeljenja";
+            // 
+            // AddCourseButton
+            // 
+            this.AddCourseButton.Location = new System.Drawing.Point(582, 329);
+            this.AddCourseButton.Name = "AddCourseButton";
+            this.AddCourseButton.Size = new System.Drawing.Size(100, 23);
+            this.AddCourseButton.TabIndex = 10;
+            this.AddCourseButton.Text = "Dodajte predmet";
+            this.AddCourseButton.UseVisualStyleBackColor = true;
+            this.AddCourseButton.Click += new System.EventHandler(this.AddCourseButton_Click);
             // 
             // CourseTextBox
             // 
             this.CourseTextBox.Location = new System.Drawing.Point(579, 215);
             this.CourseTextBox.Name = "CourseTextBox";
             this.CourseTextBox.Size = new System.Drawing.Size(100, 20);
-            this.CourseTextBox.TabIndex = 9;
+            this.CourseTextBox.TabIndex = 8;
             // 
             // label31
             // 
@@ -385,54 +409,6 @@
             this.label31.TabIndex = 32;
             this.label31.Text = "Naziv Predmeta";
             // 
-            // CoursesCheckedListBox
-            // 
-            this.CoursesCheckedListBox.FormattingEnabled = true;
-            this.CoursesCheckedListBox.Items.AddRange(new object[] {
-            "1- Matematika",
-            "2- Srpski",
-            "3-Fizika",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20",
-            "21",
-            "22",
-            "23",
-            "24",
-            "25",
-            "26",
-            "27",
-            "28",
-            "29",
-            "30"});
-            this.CoursesCheckedListBox.Location = new System.Drawing.Point(160, 202);
-            this.CoursesCheckedListBox.Name = "CoursesCheckedListBox";
-            this.CoursesCheckedListBox.Size = new System.Drawing.Size(170, 109);
-            this.CoursesCheckedListBox.TabIndex = 5;
-            // 
-            // ClassTeacherComboBox
-            // 
-            this.ClassTeacherComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ClassTeacherComboBox.FormattingEnabled = true;
-            this.ClassTeacherComboBox.Location = new System.Drawing.Point(216, 155);
-            this.ClassTeacherComboBox.Name = "ClassTeacherComboBox";
-            this.ClassTeacherComboBox.Size = new System.Drawing.Size(100, 21);
-            this.ClassTeacherComboBox.TabIndex = 4;
-            // 
             // ClassNumberComboBox
             // 
             this.ClassNumberComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -442,24 +418,15 @@
             "2",
             "3",
             "4"});
-            this.ClassNumberComboBox.Location = new System.Drawing.Point(216, 113);
+            this.ClassNumberComboBox.Location = new System.Drawing.Point(219, 87);
             this.ClassNumberComboBox.Name = "ClassNumberComboBox";
             this.ClassNumberComboBox.Size = new System.Drawing.Size(100, 21);
             this.ClassNumberComboBox.TabIndex = 3;
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(18, 39);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(33, 13);
-            this.label9.TabIndex = 23;
-            this.label9.Text = "Smjer";
-            // 
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(16, 116);
+            this.label28.Location = new System.Drawing.Point(19, 90);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(41, 13);
             this.label28.TabIndex = 24;
@@ -468,20 +435,11 @@
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(16, 157);
+            this.label29.Location = new System.Drawing.Point(19, 131);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(100, 13);
             this.label29.TabIndex = 25;
             this.label29.Text = "Razredni Nastavnik";
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(14, 202);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(48, 13);
-            this.label30.TabIndex = 26;
-            this.label30.Text = "Predmeti";
             // 
             // StudentPanel
             // 
@@ -677,6 +635,16 @@
             this.DepartmentComboBox.Size = new System.Drawing.Size(100, 21);
             this.DepartmentComboBox.TabIndex = 7;
             // 
+            // AddStudentButton
+            // 
+            this.AddStudentButton.Location = new System.Drawing.Point(444, 267);
+            this.AddStudentButton.Name = "AddStudentButton";
+            this.AddStudentButton.Size = new System.Drawing.Size(100, 23);
+            this.AddStudentButton.TabIndex = 13;
+            this.AddStudentButton.Text = "Potvrdite";
+            this.AddStudentButton.UseVisualStyleBackColor = true;
+            this.AddStudentButton.Click += new System.EventHandler(this.AddStudentButton_Click);
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -847,6 +815,16 @@
             this.DirectorUserNameTextBox.Size = new System.Drawing.Size(100, 20);
             this.DirectorUserNameTextBox.TabIndex = 8;
             // 
+            // AddDirectorButton
+            // 
+            this.AddDirectorButton.Location = new System.Drawing.Point(569, 163);
+            this.AddDirectorButton.Name = "AddDirectorButton";
+            this.AddDirectorButton.Size = new System.Drawing.Size(100, 23);
+            this.AddDirectorButton.TabIndex = 9;
+            this.AddDirectorButton.Text = "Dodajte Direktora";
+            this.AddDirectorButton.UseVisualStyleBackColor = true;
+            this.AddDirectorButton.Click += new System.EventHandler(this.AddDirectorButton_Click);
+            // 
             // label53
             // 
             this.label53.AutoSize = true;
@@ -921,6 +899,16 @@
             this.UserNameTextBox.Name = "UserNameTextBox";
             this.UserNameTextBox.Size = new System.Drawing.Size(100, 20);
             this.UserNameTextBox.TabIndex = 4;
+            // 
+            // AddAdminButton
+            // 
+            this.AddAdminButton.Location = new System.Drawing.Point(213, 163);
+            this.AddAdminButton.Name = "AddAdminButton";
+            this.AddAdminButton.Size = new System.Drawing.Size(100, 23);
+            this.AddAdminButton.TabIndex = 5;
+            this.AddAdminButton.Text = "Dodajte administratora";
+            this.AddAdminButton.UseVisualStyleBackColor = true;
+            this.AddAdminButton.Click += new System.EventHandler(this.AddAdminButton_Click);
             // 
             // label14
             // 
@@ -1038,6 +1026,16 @@
             this.label27.TabIndex = 73;
             this.label27.Text = "*";
             // 
+            // AddTeacherButton
+            // 
+            this.AddTeacherButton.Location = new System.Drawing.Point(213, 241);
+            this.AddTeacherButton.Name = "AddTeacherButton";
+            this.AddTeacherButton.Size = new System.Drawing.Size(100, 23);
+            this.AddTeacherButton.TabIndex = 37;
+            this.AddTeacherButton.Text = "Potvrdite";
+            this.AddTeacherButton.UseVisualStyleBackColor = true;
+            this.AddTeacherButton.Click += new System.EventHandler(this.AddTeacherButton_Click);
+            // 
             // label17
             // 
             this.label17.AutoSize = true;
@@ -1102,86 +1100,6 @@
             this.TeacherNameTextBox.Size = new System.Drawing.Size(100, 20);
             this.TeacherNameTextBox.TabIndex = 2;
             // 
-            // AddSectionsButton
-            // 
-            this.AddSectionsButton.Location = new System.Drawing.Point(553, 68);
-            this.AddSectionsButton.Name = "AddSectionsButton";
-            this.AddSectionsButton.Size = new System.Drawing.Size(100, 23);
-            this.AddSectionsButton.TabIndex = 8;
-            this.AddSectionsButton.Text = "Dodajte smjer";
-            this.AddSectionsButton.UseVisualStyleBackColor = true;
-            this.AddSectionsButton.Click += new System.EventHandler(this.AddSectionsButton_Click);
-            // 
-            // AddDepartmentAndClassTeacherButton
-            // 
-            this.AddDepartmentAndClassTeacherButton.Location = new System.Drawing.Point(94, 332);
-            this.AddDepartmentAndClassTeacherButton.Name = "AddDepartmentAndClassTeacherButton";
-            this.AddDepartmentAndClassTeacherButton.Size = new System.Drawing.Size(224, 23);
-            this.AddDepartmentAndClassTeacherButton.TabIndex = 6;
-            this.AddDepartmentAndClassTeacherButton.Text = "Dodajte odjeljenje i razrednog nastavnika";
-            this.AddDepartmentAndClassTeacherButton.UseVisualStyleBackColor = true;
-            this.AddDepartmentAndClassTeacherButton.Click += new System.EventHandler(this.AddDepartmentAndClassTeacherButton_Click);
-            // 
-            // AddCourseButton
-            // 
-            this.AddCourseButton.Location = new System.Drawing.Point(582, 329);
-            this.AddCourseButton.Name = "AddCourseButton";
-            this.AddCourseButton.Size = new System.Drawing.Size(100, 23);
-            this.AddCourseButton.TabIndex = 11;
-            this.AddCourseButton.Text = "Dodajte predmet";
-            this.AddCourseButton.UseVisualStyleBackColor = true;
-            this.AddCourseButton.Click += new System.EventHandler(this.AddCourseButton_Click);
-            // 
-            // AddStudentButton
-            // 
-            this.AddStudentButton.Location = new System.Drawing.Point(444, 267);
-            this.AddStudentButton.Name = "AddStudentButton";
-            this.AddStudentButton.Size = new System.Drawing.Size(100, 23);
-            this.AddStudentButton.TabIndex = 13;
-            this.AddStudentButton.Text = "Potvrdite";
-            this.AddStudentButton.UseVisualStyleBackColor = true;
-            this.AddStudentButton.Click += new System.EventHandler(this.AddStudentButton_Click);
-            // 
-            // AddDirectorButton
-            // 
-            this.AddDirectorButton.Location = new System.Drawing.Point(569, 163);
-            this.AddDirectorButton.Name = "AddDirectorButton";
-            this.AddDirectorButton.Size = new System.Drawing.Size(100, 23);
-            this.AddDirectorButton.TabIndex = 9;
-            this.AddDirectorButton.Text = "Dodajte Direktora";
-            this.AddDirectorButton.UseVisualStyleBackColor = true;
-            this.AddDirectorButton.Click += new System.EventHandler(this.AddDirectorButton_Click);
-            // 
-            // AddAdminButton
-            // 
-            this.AddAdminButton.Location = new System.Drawing.Point(213, 163);
-            this.AddAdminButton.Name = "AddAdminButton";
-            this.AddAdminButton.Size = new System.Drawing.Size(100, 23);
-            this.AddAdminButton.TabIndex = 5;
-            this.AddAdminButton.Text = "Dodajte administratora";
-            this.AddAdminButton.UseVisualStyleBackColor = true;
-            this.AddAdminButton.Click += new System.EventHandler(this.AddAdminButton_Click);
-            // 
-            // AddTeacherButton
-            // 
-            this.AddTeacherButton.Location = new System.Drawing.Point(213, 241);
-            this.AddTeacherButton.Name = "AddTeacherButton";
-            this.AddTeacherButton.Size = new System.Drawing.Size(100, 23);
-            this.AddTeacherButton.TabIndex = 37;
-            this.AddTeacherButton.Text = "Potvrdite";
-            this.AddTeacherButton.UseVisualStyleBackColor = true;
-            this.AddTeacherButton.Click += new System.EventHandler(this.AddTeacherButton_Click);
-            // 
-            // ChangePassAdminButton
-            // 
-            this.ChangePassAdminButton.Location = new System.Drawing.Point(443, 262);
-            this.ChangePassAdminButton.Name = "ChangePassAdminButton";
-            this.ChangePassAdminButton.Size = new System.Drawing.Size(130, 23);
-            this.ChangePassAdminButton.TabIndex = 34;
-            this.ChangePassAdminButton.Text = "Potvrdite promjenu";
-            this.ChangePassAdminButton.UseVisualStyleBackColor = true;
-            this.ChangePassAdminButton.Click += new System.EventHandler(this.ChangePassAdminButton_Click);
-            // 
             // ControlTableButton
             // 
             this.ControlTableButton.Location = new System.Drawing.Point(238, 9);
@@ -1211,6 +1129,47 @@
             this.LogOutUserButton.Text = "Odjava";
             this.LogOutUserButton.UseVisualStyleBackColor = true;
             this.LogOutUserButton.Click += new System.EventHandler(this.LogOutUserButton_Click);
+            // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.Location = new System.Drawing.Point(199, 53);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(11, 13);
+            this.label56.TabIndex = 78;
+            this.label56.Text = "*";
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Location = new System.Drawing.Point(558, 218);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(11, 13);
+            this.label57.TabIndex = 79;
+            this.label57.Text = "*";
+            // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.Location = new System.Drawing.Point(562, 54);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(11, 13);
+            this.label58.TabIndex = 80;
+            this.label58.Text = "*";
+            // 
+            // ClassTeachersComboBox
+            // 
+            this.ClassTeachersComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ClassTeachersComboBox.FormattingEnabled = true;
+            this.ClassTeachersComboBox.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4"});
+            this.ClassTeachersComboBox.Location = new System.Drawing.Point(219, 127);
+            this.ClassTeachersComboBox.Name = "ClassTeachersComboBox";
+            this.ClassTeachersComboBox.Size = new System.Drawing.Size(100, 21);
+            this.ClassTeachersComboBox.TabIndex = 4;
             // 
             // AdministrationForm
             // 
@@ -1284,13 +1243,9 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox StudentNameTextBox;
         private System.Windows.Forms.Panel DepartmentPanel;
-        private System.Windows.Forms.CheckedListBox CoursesCheckedListBox;
-        private System.Windows.Forms.ComboBox ClassTeacherComboBox;
         private System.Windows.Forms.ComboBox ClassNumberComboBox;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.TextBox CourseTextBox;
         private System.Windows.Forms.Label label32;
@@ -1345,7 +1300,6 @@
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.TextBox DepartmentNumberTextBox;
         private System.Windows.Forms.Label label48;
-        private System.Windows.Forms.ComboBox SectionsComboBox;
         private RoundedButton AddSectionsButton;
         private System.Windows.Forms.TextBox SectionsNameTextBox;
         private System.Windows.Forms.Label label47;
@@ -1362,5 +1316,9 @@
         private System.Windows.Forms.TextBox DirectorSurnameTextBox;
         private System.Windows.Forms.TextBox DirectorNameTextBox;
         private System.Windows.Forms.Label label55;
+        private System.Windows.Forms.Label label58;
+        private System.Windows.Forms.Label label57;
+        private System.Windows.Forms.Label label56;
+        private System.Windows.Forms.ComboBox ClassTeachersComboBox;
     }
 }

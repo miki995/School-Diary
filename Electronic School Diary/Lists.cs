@@ -18,13 +18,17 @@ namespace ElectronicSchoolDiary
             try
             {
                 if (DropDownName.Items.Count > 0)
+                {
                     DropDownName.Items.Clear();
-                SqlCeCommand cmd = new SqlCeCommand(Query, Connection);
-                SqlCeDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                    DropDownName.Items.Add(reader[column].ToString());
-                 DropDownName.SelectedIndex = 0;
-                reader.Close();
+                    SqlCeCommand cmd = new SqlCeCommand(Query, Connection);
+                    SqlCeDataReader reader = cmd.ExecuteReader();
+                    while(reader.Read())
+                    
+                        DropDownName.Items.Add(reader[column].ToString());
+                        DropDownName.SelectedIndex = 0;
+                        reader.Close();
+                    
+                }
             }
             catch (Exception exc)
             {
@@ -38,16 +42,19 @@ namespace ElectronicSchoolDiary
             try
             {
                 if (DropDownName.Items.Count > 0)
+                {
                     DropDownName.Items.Clear();
-                SqlCeCommand cmd1 = new SqlCeCommand(Query1, Connection);
-                SqlCeCommand cmd2 = new SqlCeCommand(Query2, Connection);
-                SqlCeDataReader reader1 = cmd1.ExecuteReader();
-                SqlCeDataReader reader2 = cmd2.ExecuteReader();
-                while (reader1.Read() && reader2.Read())
-                    DropDownName.Items.Add(reader1[column1].ToString() + "-" + reader2[column2].ToString());
-                DropDownName.SelectedIndex = 0;
-                reader1.Close();
-                reader2.Close();
+                    SqlCeCommand cmd1 = new SqlCeCommand(Query1, Connection);
+                    SqlCeCommand cmd2 = new SqlCeCommand(Query2, Connection);
+                    SqlCeDataReader reader1 = cmd1.ExecuteReader();
+                    SqlCeDataReader reader2 = cmd2.ExecuteReader();
+                    while(reader1.Read() && reader2.Read())
+                        DropDownName.Items.Add(reader1[column1].ToString() + "-" + reader2[column2].ToString());
+                        DropDownName.SelectedIndex = 0;
+                        reader1.Close();
+                        reader2.Close();
+                    
+                }
             }
             catch (Exception exc)
             {
@@ -55,25 +62,6 @@ namespace ElectronicSchoolDiary
                 MessageBox.Show(exc.Message.ToString());
             }
         }
-        public static void FillCheckedListBox(string Query, CheckedListBox CheckedListName)
-        {
-
-            try
-            {
-                if (CheckedListName.Items.Count > 0)
-                    CheckedListName.Items.Clear();
-                SqlCeCommand cmd = new SqlCeCommand(Query, Connection);
-                SqlCeDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                    CheckedListName.Items.Add(reader[0].ToString());
-                CheckedListName.SelectedIndex = 0;
-                reader.Close();
-            }
-            catch (Exception exc)
-            {
-
-                MessageBox.Show(exc.Message.ToString());
-            }
-        }
+      
     }
 }

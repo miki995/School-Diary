@@ -1,5 +1,6 @@
 ﻿using ElectronicSchoolDiary.Models;
 using ElectronicSchoolDiary.Repos;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +9,7 @@ using System.Drawing;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -18,7 +20,7 @@ namespace ElectronicSchoolDiary
         private User CurrentUser;
         private Admin CurrentAdmin;
 
-        public void warning()
+        public void Warning()
         {
             MessageBox.Show("Polja ne mogu biti prazna !");
         }
@@ -36,9 +38,9 @@ namespace ElectronicSchoolDiary
             UserBox.SelectedIndex = 2;
             ClassNumberComboBox.SelectedIndex = 0;
             PopulateDepartmentsComboBox();
-            PopulateSectionsComboBox();
             PopulateClassNumberComboBox();
             PopulateClassNumbComboBox();
+            PopulateTeachersComboBox();
         }
 
         private void PopulateDepartmentsComboBox()
@@ -47,11 +49,13 @@ namespace ElectronicSchoolDiary
                 string SectionsQuery = SectionsRepository.GetQuery();
                 Lists.FillDropDownList2(SectionsQuery,"Description",DepartmentQuery,"Title",DepartmentComboBox);
         }
-        private void PopulateSectionsComboBox()
+        private void PopulateTeachersComboBox()
         {
-                string SectionsQuery = SectionsRepository.GetQuery();
-                Lists.FillDropDownList1(SectionsQuery, "Description", SectionsComboBox);
+            string Name = TeacherRepository.GetNameQuery();
+            string Surname = TeacherRepository.GetSurnameQuery();
+            Lists.FillDropDownList2(Name, "Name", Surname, "Surname", ClassTeachersComboBox);
         }
+      
         private void PopulateClassNumberComboBox()
         {
             string ClassesQuery = ClassesRepository.GetQuery();
@@ -62,27 +66,31 @@ namespace ElectronicSchoolDiary
             string ClassesQuery = ClassesRepository.GetQuery();
             Lists.FillDropDownList1(ClassesQuery, "Number", ClassComboBox);
         }
-        private void PopulateCoursesListBox()
-        {
-            string CoursesQuery = CoursesRepository.GetQuery();
-            Lists.FillCheckedListBox(CoursesQuery, CoursesCheckedListBox);
-        }
-        private void PopulateTeachersComboBox()
-        {
-            string TeacherQuery1 = TeacherRepository.GetQuery();
-            Lists.FillDropDownList2(TeacherQuery1,"Name", TeacherQuery1,"Surname", DepartmentComboBox);
-        }
+     
 
-        private string selectedUser()
+        private string SelectedUser()
         {
             return UserBox.Text;
         }
+        private string GetCurrentDepartmentTitle()
+        {
+            string[] parts = DepartmentComboBox.Text.Split('-');
+            string departmentTitle = parts[1];
+            return departmentTitle;
+        }
+        private int GetCurrentClassNumber()
+        {
+            return int.Parse(ClassNumberComboBox.Text);
+        }
+        private string GetCurrentClassTeacher()
+        {
+            return ClassTeachersComboBox.Text;
+        }
         private void UserBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-          
             try
             {
-                string current = selectedUser();
+                string current = SelectedUser();
               if(current == "Administratora")
                 {
                     AdministratorPanel.Show();
@@ -160,14 +168,14 @@ namespace ElectronicSchoolDiary
         {
             if (AdminNameTextBox.Text.Length == 0 || AdminSurnameTextBox.Text.Length == 0 || UserNameTextBox.Text.Length == 0)
             {
-                warning();
+                Warning();
             }
             else
             {
-                bool isUnique = UsersRepository.CheckUnique(AdminNameTextBox.Text);
+                bool isUnique = UsersRepository.CheckUnique(UserNameTextBox.Text);
                 if(isUnique != true)
                 {
-                    bool isAdminAdded = AdminRepository.AddAdmin(AdminNameTextBox.Text, AdminSurnameTextBox.Text, UserNameTextBox.Text, AdminNameTextBox.Text + AdminSurnameTextBox.Text);
+                    bool isAdminAdded = AdminRepository.AddAdmin(AdminNameTextBox.Text, AdminSurnameTextBox.Text, UserNameTextBox.Text, AdminNameTextBox.Text );
                     if (isAdminAdded == true)
                     {
                         AdminNameTextBox.Text = "";
@@ -185,7 +193,7 @@ namespace ElectronicSchoolDiary
         }
         private void AddSectionsButton_Click(object sender, EventArgs e)
         {
-            if (SectionsNameTextBox.Text.Length == 0) { warning(); }
+            if (SectionsNameTextBox.Text.Length == 0) { Warning(); }
             else
             {
                 bool isUnique = SectionsRepository.CheckUnique(SectionsNameTextBox.Text);
@@ -195,7 +203,6 @@ namespace ElectronicSchoolDiary
                     if (isSectionAdded == true)
                     {
                         SectionsNameTextBox.Text = "";
-                        PopulateSectionsComboBox();
                     }
                 }
                 else SectionsNameTextBox.Text = "";
@@ -207,14 +214,14 @@ namespace ElectronicSchoolDiary
         {
             if (DirectorNameTextBox.Text.Length == 0 || DirectorSurnameTextBox.Text.Length == 0 || DirectorUserNameTextBox.Text.Length == 0)
             {
-                warning();
+                Warning();
             }
             else
             {
-                bool isUnique = UsersRepository.CheckUnique(DirectorNameTextBox.Text);
+                bool isUnique = UsersRepository.CheckUnique(DirectorUserNameTextBox.Text);
                 if (isUnique != true)
                 {
-                    bool isDirectorAdded = DirectorRepository.AddDirector(DirectorNameTextBox.Text, DirectorSurnameTextBox.Text, DirectorUserNameTextBox.Text, DirectorNameTextBox.Text + DirectorSurnameTextBox.Text);
+                    bool isDirectorAdded = DirectorRepository.AddDirector(DirectorNameTextBox.Text, DirectorSurnameTextBox.Text, DirectorUserNameTextBox.Text, DirectorNameTextBox.Text);
                     if (isDirectorAdded == true)
                     {
                         DirectorNameTextBox.Text = "";
@@ -228,6 +235,7 @@ namespace ElectronicSchoolDiary
                         DirectorUserNameTextBox.Text = "";
                     }
                 }
+               
             }
         }
 
@@ -238,7 +246,7 @@ namespace ElectronicSchoolDiary
                 NewPassTextBox.Text.Length == 0 ||
                 ConfirmedNewPassTextBox.Text.Length == 0)
             {
-                warning();
+                Warning();
             }
             else
             {
@@ -271,37 +279,45 @@ namespace ElectronicSchoolDiary
 
         private void AddStudentButton_Click(object sender, EventArgs e)
         {
+            bool isEmail = Regex.IsMatch(ParentEmailTextBox.Text, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase);
+
             if (StudentNameTextBox.Text.Length == 0 ||
             StudentSurnameTextBox.Text.Length == 0 ||
             StudentJmbgTextBox.Text.Length == 0 ||
             ParentNameTextBox.Text.Length == 0||
             ParentSurnameTextBox.Text.Length == 0)
             {
-                warning();
+                Warning();
+            }
+            else if (ParentEmailTextBox.Text.Length > 0 && isEmail == false)
+            {
+                MessageBox.Show("Molimo unesite validan email!");
             }
             else
             {
-                bool isStudentAdded = StudentRepository.AddStudent(StudentNameTextBox.Text, StudentSurnameTextBox.Text, StudentJmbgTextBox.Text, StudentAddressTextBox.Text, StudentPhoneTextBox.Text);
-                if (isStudentAdded == true)
-                {
-                    StudentNameTextBox.Text = "";
-                    StudentSurnameTextBox.Text = "";
-                    StudentJmbgTextBox.Text = "";
-                    StudentAddressTextBox.Text = "";
-                    StudentPhoneTextBox.Text = "";
-                    DepartmentComboBox.Text = "";
-                }
-                bool isParentAdded = ParentRepository.AddParent(ParentNameTextBox.Text, ParentSurnameTextBox.Text, ParentAddressTextBox.Text, ParentEmailTextBox.Text, ParentPhoneTextBox.Text, StudentJmbgTextBox.Text); 
-                if(isParentAdded == true)
-                {
+                    string currentDepartmentTitle = GetCurrentDepartmentTitle();
+                    bool isParentAdded = ParentRepository.AddParent(ParentNameTextBox.Text, ParentSurnameTextBox.Text, ParentAddressTextBox.Text, ParentEmailTextBox.Text, ParentPhoneTextBox.Text, StudentJmbgTextBox.Text, int.Parse(currentDepartmentTitle),
+                        StudentNameTextBox.Text,StudentSurnameTextBox.Text,StudentJmbgTextBox.Text,StudentAddressTextBox.Text,StudentPhoneTextBox.Text
+                        );
+                    if (isParentAdded == true)
+                    {
 
-                    ParentNameTextBox.Text = "";
-                    ParentSurnameTextBox.Text = "";
-                    ParentAddressTextBox.Text = "";
-                    ParentEmailTextBox.Text = "";
-                    ParentPhoneTextBox.Text = "";
-                    StudentJmbgTextBox.Text = "";
-                }
+                        ParentNameTextBox.Text = "";
+                        ParentSurnameTextBox.Text = "";
+                        ParentAddressTextBox.Text = "";
+                        ParentEmailTextBox.Text = "";
+                        ParentPhoneTextBox.Text = "";
+                        StudentJmbgTextBox.Text = "";
+
+                        StudentNameTextBox.Text = "";
+                        StudentSurnameTextBox.Text = "";
+                        StudentJmbgTextBox.Text = "";
+                        StudentAddressTextBox.Text = "";
+                        StudentPhoneTextBox.Text = "";
+                        DepartmentComboBox.Text = "";
+                    }
+                
+              
             }
         }
         private void ControlTableButton_Click(object sender, EventArgs e)
@@ -319,22 +335,41 @@ namespace ElectronicSchoolDiary
         {
             if(CourseTextBox.Text.Length == 0)
             {
-                warning();
+                Warning();
             }
         }
 
         private void AddDepartmentAndClassTeacherButton_Click(object sender, EventArgs e)
         {
-            if(StudentNameTextBox.Text.Length == 0 ||
-               StudentSurnameTextBox.Text.Length == 0 ||
-               StudentNameTextBox.Text.Length == 0 ||
-               StudentJmbgTextBox.Text.Length == 0 ||
-               ParentNameTextBox.Text.Length == 0 ||
-               ParentSurnameTextBox.Text.Length == 0 ||
-               StudentNameTextBox.Text.Length == 0
-                )
+            if(DepartmentNumberTextBox.Text.Length == 0  )
             {
-                warning();
+                Warning();
+            }
+            else
+            {
+                string[] parts = GetCurrentClassTeacher().Split('-');
+                string name = parts[0];
+                string surname = parts[1];
+                int TeachersId = TeacherRepository.GetIdByName(name,surname);
+
+                int ClassNumber = GetCurrentClassNumber();
+                int ClassesId = ClassesRepository.GetIdByNumber(ClassNumber);
+
+                try
+                {
+                    int Title = int.Parse(DepartmentNumberTextBox.Text);
+                    bool isDepartmentAdded = DepartmentsRepository.AddDepartment(Title, TeachersId, ClassesId);
+                    if (isDepartmentAdded == true)
+                    {
+                        DepartmentNumberTextBox.Text = "";
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Molimo unesite broj odjeljenja" );
+                }
+               
+
             }
         }
 
@@ -344,14 +379,14 @@ namespace ElectronicSchoolDiary
                 TeacherSurnameTextBox.Text.Length == 0 ||
                 TeacherUserNameTextBox.Text.Length == 0)
             {
-                warning();
+                Warning();
             }
             else
             {
                 bool isUnique = UsersRepository.CheckUnique(TeacherUserNameTextBox.Text);
                 if (isUnique != true)
                 {
-                    bool isTeacherAdded = TeacherRepository.AddTeacher(TeacherNameTextBox.Text, TeacherSurnameTextBox.Text, TeacherUserNameTextBox.Text, TeacherAddressTextBox.Text, TeacherPhoneTextBox.Text, TeacherNameTextBox.Text + TeacherSurnameTextBox.Text);
+                    bool isTeacherAdded = TeacherRepository.AddTeacher(TeacherNameTextBox.Text, TeacherSurnameTextBox.Text, TeacherUserNameTextBox.Text, TeacherAddressTextBox.Text, TeacherPhoneTextBox.Text, TeacherNameTextBox.Text);
                     if (isTeacherAdded == true)
                     {
                         TeacherNameTextBox.Text = "";

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlServerCe;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,7 +13,6 @@ namespace ElectronicSchoolDiary.Repos
     class AdminRepository
     {
         public static SqlCeConnection Connection = DataBaseConnection.Instance.Connection;
-
         public static bool AddAdmin(string AdminName, string AdminSurname,string AdminUserName,string Password)
         {
             bool flag = false;
@@ -20,7 +20,7 @@ namespace ElectronicSchoolDiary.Repos
             try
             {
                    UsersRepository.InsertUser(AdminUserName, Password);
-                   int AdminId = UsersRepository.GetIdByName(AdminUserName, Password);
+                   int AdminId = UsersRepository.GetIdByName(AdminUserName);
 
                     SqlCeCommand command = new SqlCeCommand(@"INSERT INTO Administration (Name,Surname,UsersId)
                     VALUES (@name, @surname, @usersId)", Connection);
@@ -30,7 +30,8 @@ namespace ElectronicSchoolDiary.Repos
                     int result = command.ExecuteNonQuery();
                     if (result > 0)
                     {
-                        flag = true;
+                    command.Dispose();
+                    flag = true;
                         MessageBox.Show("Administrator je uspješno dodat !");
                     }
             }
