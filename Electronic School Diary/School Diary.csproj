@@ -114,6 +114,7 @@
     <Compile Include="Models\Student.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repos\Teachers_Departments_CoursesRepository.cs" />
     <Compile Include="Repos\CoursesRepository.cs" />
     <Compile Include="Repos\DirectorRepository.cs" />
     <Compile Include="Repos\ClassesRepository .cs" />

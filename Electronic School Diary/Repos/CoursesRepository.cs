@@ -21,6 +21,19 @@ namespace ElectronicSchoolDiary.Repos
             return query;
 
         }
+        public static int GetIdByClassesId(int classesId)
+        {
+            SqlCeCommand command = new SqlCeCommand(@"SELECT Id FROM Courses WHERE ClassesId = @classesid", Connection);
+            command.Parameters.AddWithValue("@classesid", classesId);
+            SqlCeDataReader reader = command.ExecuteReader();
+
+            reader.Read();
+
+            int result = (int)reader["Id"];
+            reader.Close();
+
+            return result;
+        }
 
 
     }

@@ -22,9 +22,23 @@ namespace ElectronicSchoolDiary.Repos
             return query;
          
         }
+        public static int GetIdByTitle(int title, int ClassesId)
+        {
+            SqlCeCommand command = new SqlCeCommand(@"SELECT Id FROM Departments WHERE Title = @title AND ClassesId = @classid", Connection);
+            command.Parameters.AddWithValue("@title", title);
+            command.Parameters.AddWithValue("@classid", ClassesId);
+            SqlCeDataReader reader = command.ExecuteReader();
+
+            reader.Read();
+
+            int result = (int)reader["Id"];
+            reader.Close();
+
+            return result;
+        }
         public static int GetIdByTitle(int title)
         {
-            SqlCeCommand command = new SqlCeCommand(@"SELECT Id FROM Departments WHERE Title = @title", Connection);
+            SqlCeCommand command = new SqlCeCommand(@"SELECT Id FROM Departments WHERE Title = @title AND ClassesId = @classid", Connection);
             command.Parameters.AddWithValue("@title", title);
             SqlCeDataReader reader = command.ExecuteReader();
 
@@ -51,7 +65,13 @@ namespace ElectronicSchoolDiary.Repos
                     {
                         flag = true;
                         MessageBox.Show("Odjeljenje je uspješno dodato !");
-                    }
+
+                    int departmentsId = GetIdByTitle(Title, ClassesId);
+                    int coursesId = CoursesRepository.GetIdByClassesId(ClassesId);
+                    
+                    Teachers_Departments_CoursesRepository.AddTeachers_Departments_Courses(TeachersId, departmentsId, coursesId);
+
+                }
             }
             catch (Exception ex)
             {
