@@ -14,17 +14,30 @@ namespace ElectronicSchoolDiary.Repos
     {
         private static SqlCeConnection Connection = DataBaseConnection.Instance.Connection;
 
+       
+        public static string GetQuery(int DepartmentId)
+        {
+            string query;
+            query = @"SELECT Id, Name, Surname FROM Students WHERE DepartmentsId =" + DepartmentId;
+            return query;
+        }
         public static string GetNameQuery()
         {
             string query;
-            query = @"SELECT Name FROM Students";
+            query = @"SELECT Name,Surname FROM Students";
             return query;
         }
-        public static string GetSurnameQuery()
+        public static string GetStudentIds( int departmentId)
         {
-            string query;
-            query = @"SELECT Surname FROM Students";
-            return query;
+            SqlCeCommand command = new SqlCeCommand(@"SELECT Id FROM Students WHERE DepartmentsId = @depid", Connection);
+            command.Parameters.AddWithValue("@depid", departmentId);
+            SqlCeDataReader reader = command.ExecuteReader();
+            string m = "";
+            while (reader.Read())
+            {
+                m += reader["Id"].ToString() + " ,";
+            }
+            return m.TrimEnd(',');
         }
         public static bool AddStudent(string StudentName, string StudentSurname, string Jmbg, string Address, string Phone_number,int departmentsId)
         {
@@ -66,22 +79,76 @@ namespace ElectronicSchoolDiary.Repos
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+               MessageBox.Show(ex.Message);
             }
             return flag;
         }
 
         public static int GetIdByJmbg(string jmbg)
         {
-            SqlCeCommand command = new SqlCeCommand(@"SELECT Id FROM Students WHERE Jmbg = @jmbg", Connection);
-            command.Parameters.AddWithValue("@jmbg", jmbg);
-            SqlCeDataReader reader = command.ExecuteReader();
+            int result = -1;
+            try
+            {
+                SqlCeCommand command = new SqlCeCommand(@"SELECT Id FROM Students WHERE Jmbg = @jmbg", Connection);
+                command.Parameters.AddWithValue("@jmbg", jmbg);
+                SqlCeDataReader reader = command.ExecuteReader();
 
-            reader.Read();
-            int result = (int)reader["Id"];
-            reader.Close();
+                reader.Read();
+                 result = (int)reader["Id"];
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
             return result;
+        }
+        public static Student GetStudentByName(string name, string surname)
+        {
+            Student student = null;
+            try
+            {
+                SqlCeCommand command = new SqlCeCommand(@"SELECT Jmbg,Address,Phone_number FROM Students WHERE name = @name AND surname = @surname", Connection);
+                command.Parameters.AddWithValue("@name", name);
+                command.Parameters.AddWithValue("@surname", surname);
+                SqlCeDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    string jmbg = reader["Jmbg"].ToString();
+                    string address = reader["Address"].ToString();
+                    string phone = reader["Phone_number"].ToString();
+                    student = new Student(name, surname, jmbg, address, phone);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            return student;
+        }
+        public static int GetDepartmentIdByStudent(Student student)
+        {
+            int depId = -1;
+            try
+            {
+                SqlCeCommand command = new SqlCeCommand(@"SELECT DepartmentsId FROM Students WHERE Jmbg = @jmbg", Connection);
+                command.Parameters.AddWithValue("@jmbg", student.Jmbg);
+                SqlCeDataReader reader = command.ExecuteReader();
+
+                reader.Read();
+                 depId = (int)reader["DepartmentsId"];
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            return depId;
+
         }
         public static bool CheckUnique(string jmbg)
         {

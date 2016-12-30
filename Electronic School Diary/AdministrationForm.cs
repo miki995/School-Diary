@@ -39,7 +39,7 @@ namespace ElectronicSchoolDiary
             ClassNumberComboBox.SelectedIndex = 0;
             PopulateDepartmentsComboBox();
             PopulateClassNumberComboBox();
-            PopulateClassNumbComboBox();
+            PopulateClassNumbersComboBox();
             PopulateTeachersComboBox();
         }
 
@@ -61,10 +61,10 @@ namespace ElectronicSchoolDiary
             string ClassesQuery = ClassesRepository.GetQuery();
             Lists.FillDropDownList1(ClassesQuery,"Number", ClassNumberComboBox);
         }
-        private void PopulateClassNumbComboBox()
+        private void PopulateClassNumbersComboBox()
         {
             string ClassesQuery = ClassesRepository.GetQuery();
-            Lists.FillDropDownList1(ClassesQuery, "Number", ClassComboBox);
+            Lists.FillDropDownList1(ClassesQuery, "Number", ClassNumbersComboBox);
         }
      
 
@@ -337,6 +337,23 @@ namespace ElectronicSchoolDiary
             {
                 Warning();
             }
+            else
+            {
+                try
+                {
+                  
+                    bool isAdded =    CoursesRepository.AddCourse(CourseTextBox.Text, int.Parse(ClassNumbersComboBox.Text));
+                    if (isAdded == true)
+                    {
+                        CourseTextBox.Text = "";
+                    }
+                  
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Molimo unesite broj odjeljenja");
+                }
+            }
         }
 
         private void AddDepartmentAndClassTeacherButton_Click(object sender, EventArgs e)
@@ -361,6 +378,7 @@ namespace ElectronicSchoolDiary
                     bool isDepartmentAdded = DepartmentsRepository.AddDepartment(Title, TeachersId, ClassesId);
                     if (isDepartmentAdded == true)
                     {
+                        PopulateDepartmentsComboBox();
                         DepartmentNumberTextBox.Text = "";
                     }
                 }
@@ -389,6 +407,7 @@ namespace ElectronicSchoolDiary
                     bool isTeacherAdded = TeacherRepository.AddTeacher(TeacherNameTextBox.Text, TeacherSurnameTextBox.Text, TeacherUserNameTextBox.Text, TeacherAddressTextBox.Text, TeacherPhoneTextBox.Text, TeacherNameTextBox.Text);
                     if (isTeacherAdded == true)
                     {
+                        PopulateTeachersComboBox();
                         TeacherNameTextBox.Text = "";
                         TeacherSurnameTextBox.Text = "";
                         TeacherUserNameTextBox.Text = "";

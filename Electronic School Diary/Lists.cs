@@ -22,12 +22,10 @@ namespace ElectronicSchoolDiary
                     DropDownName.Items.Clear();
                     SqlCeCommand cmd = new SqlCeCommand(Query, Connection);
                     SqlCeDataReader reader = cmd.ExecuteReader();
-                    while(reader.Read())
-                    
+                    while (reader.Read())
                         DropDownName.Items.Add(reader[column].ToString());
                         DropDownName.SelectedIndex = 0;
                         reader.Close();
-                    
                 }
             }
             catch (Exception exc)
@@ -36,6 +34,7 @@ namespace ElectronicSchoolDiary
                 MessageBox.Show(exc.Message.ToString());
             }
         }
+        
         public static void FillDropDownList2(string Query1,string column1,string Query2,string column2, ComboBox DropDownName)
         {
 
@@ -58,7 +57,6 @@ namespace ElectronicSchoolDiary
             }
             catch (Exception exc)
             {
-
                 MessageBox.Show(exc.Message.ToString());
             }
         }

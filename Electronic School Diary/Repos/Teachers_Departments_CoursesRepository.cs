@@ -13,6 +13,18 @@ namespace ElectronicSchoolDiary.Repos
     {
         private static SqlCeConnection Connection = DataBaseConnection.Instance.Connection;
 
+        public static string GetCoursesId(int TeachersId)
+        {
+            SqlCeCommand command = new SqlCeCommand(@"SELECT CoursesId FROM Teachers_Departments_Courses WHERE TeachersId = @teachid", Connection);
+            command.Parameters.AddWithValue("@teachid", TeachersId);
+            SqlCeDataReader reader = command.ExecuteReader();
+            string coursesid = "";
+            while (reader.Read())
+            {
+                coursesid += reader["CoursesId"].ToString() + " ,";
+            }
+            return coursesid;
+        }
 
         public static void AddTeachers_Departments_Courses(int TeachersId, int DepartmentsId, int CoursesId)
         {
@@ -35,6 +47,7 @@ namespace ElectronicSchoolDiary.Repos
                  MessageBox.Show(ex.Message);
             }
         }
+       
 
 
     }

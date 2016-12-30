@@ -26,6 +26,7 @@ namespace ElectronicSchoolDiary.Repos
                 {
                     MessageBox.Show("Broj telefona se sastoji samo od brojeva!");
                 }
+               
                 else
                 {
                    bool isStudentAdded = StudentRepository.AddStudent(StudentName, StudentSurname, Jmbg, Address1, Phone_number1,departmentsId);
@@ -58,5 +59,24 @@ namespace ElectronicSchoolDiary.Repos
             return flag;
 
         }
+        public static Parent GetParentByStudentId(int studentId)
+        {
+            Parent parent;
+            SqlCeCommand command = new SqlCeCommand(@"SELECT Name, Surname, Address, Email, Phone_number FROM Parents WHERE StudentsId = @studId", Connection);
+            command.Parameters.AddWithValue("@studId", studentId);
+            SqlCeDataReader reader = command.ExecuteReader();
+
+            reader.Read();
+            string name = reader["Name"].ToString();
+            string surname = reader["Surname"].ToString();
+            string address = reader["Address"].ToString();
+            string email = reader["Email"].ToString();
+            string phone = reader["Phone_number"].ToString();
+            parent = new Parent(name, surname, address, email, phone);
+            reader.Close();
+
+            return parent;
+        }
+
     }
 }

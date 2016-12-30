@@ -14,7 +14,7 @@ namespace ElectronicSchoolDiary
 
     class Email
     {
-        public void SendEmailInBackground(string SchoolMail, string SchoolName, string SchoolMailPassword, string currentParentEmail, string currentParentName)
+        public void SendEmailInBackground(string SchoolMail, string SchoolName, string SchoolMailPassword, string currentParentEmail, string currentParentName, string Body_message)
 
         {
             try
@@ -24,8 +24,8 @@ namespace ElectronicSchoolDiary
                 var toAddress = new MailAddress(currentParentEmail, currentParentName);
                
 
-                string subject = "test";
-                string body = "Hey now!!";
+                string subject = "Ednevnik";
+                string body = Body_message;
 
 
                 var smtp = new SmtpClient
@@ -60,7 +60,6 @@ namespace ElectronicSchoolDiary
                 });
 
                 T1.Start();
-                MessageBox.Show("Email uspjesno poslat!");
                
             }
             catch (Exception exception)

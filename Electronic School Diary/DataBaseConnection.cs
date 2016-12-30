@@ -20,8 +20,9 @@ namespace ElectronicSchoolDiary
         {
             LoginForm logf = new LoginForm();
             string Dir = logf.GetHomeDirectory();
-            string connectionString = ConfigurationManager.ConnectionStrings["ConString"].ConnectionString + "Data Source ='" + @Dir + "\\DataBase.sdf'";
-            
+            string connectionString = ConfigurationManager.ConnectionStrings["ConString"].ConnectionString + "Password = 'electronicdiary'; " + "Data Source ='" + @Dir + "\\DataBase.sdf'";
+
+
             connection = new SqlCeConnection(connectionString);
             connection.Open();
         }

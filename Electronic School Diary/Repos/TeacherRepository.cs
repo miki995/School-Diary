@@ -57,15 +57,23 @@ namespace ElectronicSchoolDiary.Repos
         }
         public static int GetIdByName(string name, string surname)
         {
-            SqlCeCommand command = new SqlCeCommand(@"SELECT Id FROM Teachers WHERE Name = @name AND Surname = @surname ", Connection);
-            command.Parameters.AddWithValue("@name", name);
-            command.Parameters.AddWithValue("@surname", surname);
-            SqlCeDataReader reader = command.ExecuteReader();
+            int result = -1;
+            try
+            {
+                SqlCeCommand command = new SqlCeCommand(@"SELECT Id FROM Teachers WHERE Name = @name AND Surname = @surname ", Connection);
+                command.Parameters.AddWithValue("@name", name);
+                command.Parameters.AddWithValue("@surname", surname);
+                SqlCeDataReader reader = command.ExecuteReader();
 
-            reader.Read();
+                reader.Read();
 
-            int result = (int)reader["Id"];
-            reader.Close();
+                 result = (int)reader["Id"];
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
             return result;
         }

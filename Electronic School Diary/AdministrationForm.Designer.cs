@@ -43,11 +43,14 @@
             this.OldPassTextBox = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.DepartmentPanel = new System.Windows.Forms.Panel();
+            this.ClassTeachersComboBox = new System.Windows.Forms.ComboBox();
+            this.label58 = new System.Windows.Forms.Label();
+            this.label57 = new System.Windows.Forms.Label();
+            this.label56 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
             this.AddSectionsButton = new ElectronicSchoolDiary.RoundedButton();
             this.SectionsNameTextBox = new System.Windows.Forms.TextBox();
             this.label47 = new System.Windows.Forms.Label();
-            this.ClassComboBox = new System.Windows.Forms.ComboBox();
             this.label46 = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
             this.AddDepartmentAndClassTeacherButton = new ElectronicSchoolDiary.RoundedButton();
@@ -132,10 +135,7 @@
             this.ControlTableButton = new ElectronicSchoolDiary.RoundedButton();
             this.UserSettingsButton = new ElectronicSchoolDiary.RoundedButton();
             this.LogOutUserButton = new ElectronicSchoolDiary.RoundedButton();
-            this.label56 = new System.Windows.Forms.Label();
-            this.label57 = new System.Windows.Forms.Label();
-            this.label58 = new System.Windows.Forms.Label();
-            this.ClassTeachersComboBox = new System.Windows.Forms.ComboBox();
+            this.ClassNumbersComboBox = new System.Windows.Forms.ComboBox();
             this.PasswordPanel.SuspendLayout();
             this.DepartmentPanel.SuspendLayout();
             this.StudentPanel.SuspendLayout();
@@ -268,6 +268,7 @@
             // 
             // DepartmentPanel
             // 
+            this.DepartmentPanel.Controls.Add(this.ClassNumbersComboBox);
             this.DepartmentPanel.Controls.Add(this.ClassTeachersComboBox);
             this.DepartmentPanel.Controls.Add(this.label58);
             this.DepartmentPanel.Controls.Add(this.label57);
@@ -276,7 +277,6 @@
             this.DepartmentPanel.Controls.Add(this.AddSectionsButton);
             this.DepartmentPanel.Controls.Add(this.SectionsNameTextBox);
             this.DepartmentPanel.Controls.Add(this.label47);
-            this.DepartmentPanel.Controls.Add(this.ClassComboBox);
             this.DepartmentPanel.Controls.Add(this.label46);
             this.DepartmentPanel.Controls.Add(this.label45);
             this.DepartmentPanel.Controls.Add(this.AddDepartmentAndClassTeacherButton);
@@ -292,6 +292,47 @@
             this.DepartmentPanel.Name = "DepartmentPanel";
             this.DepartmentPanel.Size = new System.Drawing.Size(752, 374);
             this.DepartmentPanel.TabIndex = 38;
+            // 
+            // ClassTeachersComboBox
+            // 
+            this.ClassTeachersComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ClassTeachersComboBox.FormattingEnabled = true;
+            this.ClassTeachersComboBox.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4"});
+            this.ClassTeachersComboBox.Location = new System.Drawing.Point(219, 127);
+            this.ClassTeachersComboBox.Name = "ClassTeachersComboBox";
+            this.ClassTeachersComboBox.Size = new System.Drawing.Size(100, 21);
+            this.ClassTeachersComboBox.TabIndex = 4;
+            // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.Location = new System.Drawing.Point(562, 54);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(11, 13);
+            this.label58.TabIndex = 80;
+            this.label58.Text = "*";
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Location = new System.Drawing.Point(558, 218);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(11, 13);
+            this.label57.TabIndex = 79;
+            this.label57.Text = "*";
+            // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.Location = new System.Drawing.Point(199, 53);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(11, 13);
+            this.label56.TabIndex = 78;
+            this.label56.Text = "*";
             // 
             // label48
             // 
@@ -328,15 +369,6 @@
             this.label47.Size = new System.Drawing.Size(33, 13);
             this.label47.TabIndex = 74;
             this.label47.Text = "Smjer";
-            // 
-            // ClassComboBox
-            // 
-            this.ClassComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ClassComboBox.FormattingEnabled = true;
-            this.ClassComboBox.Location = new System.Drawing.Point(579, 259);
-            this.ClassComboBox.Name = "ClassComboBox";
-            this.ClassComboBox.Size = new System.Drawing.Size(100, 21);
-            this.ClassComboBox.TabIndex = 9;
             // 
             // label46
             // 
@@ -1130,46 +1162,19 @@
             this.LogOutUserButton.UseVisualStyleBackColor = true;
             this.LogOutUserButton.Click += new System.EventHandler(this.LogOutUserButton_Click);
             // 
-            // label56
+            // ClassNumbersComboBox
             // 
-            this.label56.AutoSize = true;
-            this.label56.Location = new System.Drawing.Point(199, 53);
-            this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(11, 13);
-            this.label56.TabIndex = 78;
-            this.label56.Text = "*";
-            // 
-            // label57
-            // 
-            this.label57.AutoSize = true;
-            this.label57.Location = new System.Drawing.Point(558, 218);
-            this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(11, 13);
-            this.label57.TabIndex = 79;
-            this.label57.Text = "*";
-            // 
-            // label58
-            // 
-            this.label58.AutoSize = true;
-            this.label58.Location = new System.Drawing.Point(562, 54);
-            this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(11, 13);
-            this.label58.TabIndex = 80;
-            this.label58.Text = "*";
-            // 
-            // ClassTeachersComboBox
-            // 
-            this.ClassTeachersComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ClassTeachersComboBox.FormattingEnabled = true;
-            this.ClassTeachersComboBox.Items.AddRange(new object[] {
+            this.ClassNumbersComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ClassNumbersComboBox.FormattingEnabled = true;
+            this.ClassNumbersComboBox.Items.AddRange(new object[] {
             "1",
             "2",
             "3",
             "4"});
-            this.ClassTeachersComboBox.Location = new System.Drawing.Point(219, 127);
-            this.ClassTeachersComboBox.Name = "ClassTeachersComboBox";
-            this.ClassTeachersComboBox.Size = new System.Drawing.Size(100, 21);
-            this.ClassTeachersComboBox.TabIndex = 4;
+            this.ClassNumbersComboBox.Location = new System.Drawing.Point(579, 259);
+            this.ClassNumbersComboBox.Name = "ClassNumbersComboBox";
+            this.ClassNumbersComboBox.Size = new System.Drawing.Size(100, 21);
+            this.ClassNumbersComboBox.TabIndex = 9;
             // 
             // AdministrationForm
             // 
@@ -1303,7 +1308,6 @@
         private RoundedButton AddSectionsButton;
         private System.Windows.Forms.TextBox SectionsNameTextBox;
         private System.Windows.Forms.Label label47;
-        private System.Windows.Forms.ComboBox ClassComboBox;
         private System.Windows.Forms.Label label46;
         private System.Windows.Forms.Label label49;
         private System.Windows.Forms.Label label50;
@@ -1320,5 +1324,6 @@
         private System.Windows.Forms.Label label57;
         private System.Windows.Forms.Label label56;
         private System.Windows.Forms.ComboBox ClassTeachersComboBox;
+        private System.Windows.Forms.ComboBox ClassNumbersComboBox;
     }
 }
