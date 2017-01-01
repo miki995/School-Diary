@@ -1,19 +1,30 @@
-# Information system : Electronic school diary                      
-### Team : Miroslav Maksimović, Dobrinko Drinić, Nevena Vasić
-                      
-### October 15, 2016
-                                                                   
-## Goal of information system Electronic school diary: 
-* Goal of project is to digitalize process of official records about class departments in school,
+# Information system : Electronic school diary                                        
+
+
+## Getting Started                                      
+* Goal of this project is to digitalize process of official records about class departments in school,
 facilitate and expand use of class book. 
 
-## Why we made information system Electronic school diary?
+## Prerequisites
+* [Microsoft Visual studio]( https://www.visualstudio.com )
+* [SqlCE - SQL Compact](https://github.com/ErikEJ/SqlCeToolbox) (can be used any sql database managment software)
+
+## Installing
+ You can use any software for making instaler such as :
+ 
+1. [NSIS](http://nsis.sourceforge.net/Download)
+1. [WIX](http://wixtoolset.org/releases/)
+1. [Advanced Instaler](http://www.advancedinstaller.com/)
+
+Instaler is [here](). 
+
+## Why it was built?
 
 * We made it because it will help many clients (Director, teachers, parents) get opportune information about student marks in school.
 * Difference between traditional approach and electronic is that second one is faster, so techers can devote more time to  work with students.
 * Thanks to the use of electronic diary in teaching there is no partiality in relationship with students
 
-## Which assignments information system Electronic school diary must achieve? 
+## Tasks
 
 1. Electronic marks archive
 1. Electronic marks entries 
@@ -32,10 +43,13 @@ facilitate and expand use of class book.
 *  Class teachers has same privilegies as teacher, but in addition they have access to all data which belongs to students at his department
 *  Administration has access to initial data entries into database
         
-## What are the parts of information system Electronic school diary?
+## Structure
 * Electronic diary consists of students database and GUI (Graphical User Interface) which varies with respect to client privileges
   
-## How information system Electronic school diary is implemented?
-Implementation is made with:
-* [MySql](http://www.mysql.com)
-* [Microsoft Visual studio]( https://www.visualstudio.com )
+## Built With
+* [Microsoft Visual Studio]( https://www.visualstudio.com )
+* [Sql](https://sr.wikipedia.org/sr-el/SQL)
+
+## License
+This project is licensed under the GPL - 3.0  License - see the  [LICENSE.md]( https://github.com/FFUIS-IS/2016-school-journal/blob/master/LICENSE ) file for details
+
