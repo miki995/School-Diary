@@ -16,7 +16,7 @@ facilitate and expand use of class book.
 1. [WIX](http://wixtoolset.org/releases/)
 1. [Advanced Instaler](http://www.advancedinstaller.com/)
 
-Instaler is [here](). 
+Setup files and installation instructions -  [Download](https://github.com/miki995/School-Diary/blob/master/Installation%20files.zip). 
 
 ## Why it was built?
 
@@ -26,7 +26,7 @@ Instaler is [here]().
 
 ## Tasks
 
-1. Electronic marks archive
+1. Electronic marks archive 
 1. Electronic marks entries 
 1. Electronic absents entries 
 1. Electronic concluding ratings
@@ -48,6 +48,7 @@ Instaler is [here]().
   
 ## Built With
 * [Microsoft Visual Studio]( https://www.visualstudio.com )
+* [C#](https://en.wikipedia.org/wiki/C_Sharp_(programming_language))
 * [Sql](https://sr.wikipedia.org/sr-el/SQL)
 
 ## License
