@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace ElectronicSchoolDiary
 {
-    class HashPassword
+    class Encrypt
     {
-        public  string hashPassword(string password)
+        public static string hashPassword(string password)
         {
             SHA256Managed sha256 = new SHA256Managed();
 

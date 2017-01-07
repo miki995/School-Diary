@@ -121,7 +121,7 @@
     <Compile Include="DirectorForm.Designer.cs">
       <DependentUpon>DirectorForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="HashPassword.cs" />
+    <Compile Include="Encrypt.cs" />
     <Compile Include="Lists.cs" />
     <Compile Include="Email.cs" />
     <Compile Include="LoginForm.cs">

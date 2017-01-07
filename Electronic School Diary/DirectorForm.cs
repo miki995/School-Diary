@@ -179,7 +179,7 @@ namespace ElectronicSchoolDiary
                 {
                     MessageBox.Show("Unesite novu lozinku koja se razlikuje od stare !");
                 }
-                else if (OldPassTextBox.Text == CurrentUser.Password && NewPassTextBox.Text == ConfirmedNewPassTextBox.Text)
+                else if (Encrypt.hashPassword(OldPassTextBox.Text) == CurrentUser.Password && NewPassTextBox.Text == ConfirmedNewPassTextBox.Text)
                 {
                    bool isChanged =  UsersRepository.ChangePassword(CurrentUser.Id, OldPassTextBox.Text, NewPassTextBox.Text, ConfirmedNewPassTextBox.Text);
                    if(isChanged == true)

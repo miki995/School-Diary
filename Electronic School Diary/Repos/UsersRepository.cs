@@ -21,7 +21,7 @@ namespace ElectronicSchoolDiary.Repos
             {
                 SqlCeCommand command = new SqlCeCommand(@"UPDATE Users SET Password = @pass WHERE Id=@LoggedId;", Connection);
                     command.Parameters.AddWithValue("@LoggedId", id);
-                    command.Parameters.AddWithValue("@pass", newPassword);
+                    command.Parameters.AddWithValue("@pass", Encrypt.hashPassword(newPassword));
                     int result = command.ExecuteNonQuery();
                     if (result > 0)
                     {
@@ -58,7 +58,7 @@ namespace ElectronicSchoolDiary.Repos
                 SqlCeCommand command = new SqlCeCommand(@"INSERT INTO Users (UserName, Password)
                     VALUES (@username, @password)", Connection);
                     command.Parameters.AddWithValue("@username", UserName);
-                    command.Parameters.AddWithValue("@password", Password);
+                    command.Parameters.AddWithValue("@password", Encrypt.hashPassword(Password));
                     int result = command.ExecuteNonQuery();
                     if (result > 0)
                     {

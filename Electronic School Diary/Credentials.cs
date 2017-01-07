@@ -28,16 +28,16 @@ namespace ElectronicSchoolDiary
            SqlCeConnection Connection = DataBaseConnection.Instance.Connection;
                if (Username.TextLength > 0 && Password.TextLength > 0)
                 {
-                    try
-                    { 
-                        SqlCeCommand logincommand = new SqlCeCommand(@"SELECT * FROM Users WHERE UserName=@uname and Password=@pass", Connection);
-                        logincommand.Parameters.AddWithValue("@uname", Username.Text);
-                        logincommand.Parameters.AddWithValue("@pass", Password.Text);
-                        SqlCeDataReader loginReader = logincommand.ExecuteReader();
+                try
+                {
+                    SqlCeCommand logincommand = new SqlCeCommand(@"SELECT * FROM Users WHERE UserName=@uname and Password=@pass", Connection);
+                    logincommand.Parameters.AddWithValue("@uname", Username.Text);
+                    logincommand.Parameters.AddWithValue("@pass",Encrypt.hashPassword(Password.Text));
+                    SqlCeDataReader loginReader = logincommand.ExecuteReader();
                     
                     if (loginReader.Read() &&
-                            loginReader["UserName"].ToString() == Username.Text &&
-                            loginReader["Password"].ToString() == Password.Text)
+                        loginReader["UserName"].ToString() == Username.Text &&
+                        loginReader["Password"].ToString() == Encrypt.hashPassword(Password.Text))
                         {
                         SqlCeCommand admincommand = new SqlCeCommand(@"SELECT * FROM Administration WHERE UsersId =@LoggedId", Connection);
                             admincommand.Parameters.AddWithValue("@LoggedId", loginReader["Id"]);
