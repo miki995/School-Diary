@@ -24,6 +24,16 @@ Setup files and installation instructions -  [Download](https://github.com/miki9
 * Difference between traditional approach and electronic is that second one is faster, so techers can devote more time to  work with students.
 * Thanks to the use of electronic diary in teaching there is no partiality in relationship with students
 
+## Entity Relationship diagram:
+
+
+![text](https://github.com/miki995/School-Diary/blob/master/UML%20Diagrams/Elektronski%20dnevnik.jpg)
+
+
+
+## Use Case diagram:
+![text](https://github.com/miki995/School-Diary/blob/master/UML%20Diagrams/Elektronski%20dnevnik%20-%20Use%20Case%20Diagram%20.jpg)
+
 ## Tasks
 
 1. Electronic marks archive 
